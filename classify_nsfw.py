@@ -108,7 +108,6 @@ def predict(image_path):
     nsfw_score = scores[1]
     return "NSFW score:  " + '{0:3f}'.format(nsfw_score)
 
-import glob
 
-for i in glob.glob("*.jpg"):
-    print(str(i)+" : " + predict(i))
+image = sys.argv[1]
+print ( str(image) + " : " + predict(image))
