@@ -3,9 +3,11 @@ echo "args 1 is " $1
 
 wget $1
 input=$(basename $1)
+cp $input /iexec_out/.
 
 #Download the model as a dataset
-wget https://raw.githubusercontent.com/ericr6/nsfw_prediction/master/nsfw_model.zip
+ls /iexec_in
+cp /iexec_in/nsfw_model.zip /.
 unzip nsfw_model.zip
 
 #wget https://cdn.pixabay.com/photo/2016/10/17/07/53/busan-night-scene-1747130_960_720.jpg
@@ -13,6 +15,6 @@ unzip nsfw_model.zip
 
 echo "file download from " $1
 echo "file name is " $input
-python classify_nsfw.py $input
+python classify_nsfw.py $input >>/iexec_out/result.log
 echo "file download from " $1
 echo "file name is " $input
